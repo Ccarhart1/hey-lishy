@@ -641,13 +641,26 @@ function sendDrawingEmail(imageData) {
         time: new Date().toLocaleTimeString()
     };
 
-    if (typeof emailjs !== 'undefined') {
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG) {
+        // Check if EmailJS is properly configured
+        if (window.EMAILJS_CONFIG.SERVICE_ID === 'YOUR_ACTUAL_SERVICE_ID_HERE' ||
+            window.EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_ACTUAL_TEMPLATE_ID_HERE') {
+            console.warn('EmailJS not configured - please update config.js with your actual EmailJS credentials');
+            showSuccessMessage('Drawing saved locally (email not configured) 🎨📝');
+            return;
+        }
+
+        emailjs.send(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
             .then(function (response) {
                 console.log('Drawing email sent successfully!', response.status, response.text);
+                showSuccessMessage('Drawing emailed to you! 🎨💌');
             }, function (error) {
                 console.log('Failed to send drawing email:', error);
+                showSuccessMessage('Drawing saved locally (email failed) 🎨📝');
             });
+    } else {
+        console.warn('EmailJS not available or not configured');
+        showSuccessMessage('Drawing saved locally (email not available) 🎨📝');
     }
 }
 
@@ -830,13 +843,27 @@ function sendLoveNoteEmail(note) {
         time: note.time
     };
 
-    if (typeof emailjs !== 'undefined') {
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG) {
+        // Check if EmailJS is properly configured
+        if (window.EMAILJS_CONFIG.SERVICE_ID === 'YOUR_ACTUAL_SERVICE_ID_HERE' ||
+            window.EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_ACTUAL_TEMPLATE_ID_HERE') {
+            console.warn('EmailJS not configured - please update config.js with your actual EmailJS credentials');
+            showSuccessMessage('Note saved locally (email not configured) 📝');
+            return;
+        }
+
+        emailjs.send(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
             .then(function (response) {
                 console.log('Love note email sent successfully!', response.status, response.text);
+                showSuccessMessage('Email sent to you! 💌');
             }, function (error) {
                 console.log('Failed to send love note email:', error);
+                console.error('EmailJS error details:', error);
+                showSuccessMessage('Note saved locally (email failed) 📝');
             });
+    } else {
+        console.warn('EmailJS not available or not configured');
+        showSuccessMessage('Note saved locally (email not available) 📝');
     }
 }
 

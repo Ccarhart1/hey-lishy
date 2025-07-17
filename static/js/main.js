@@ -323,19 +323,19 @@ function addRippleEffects() {
     });
 }
 
+// Smooth scroll to section (global function)
+window.scrollToSection = function (sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+};
+
 // Initialize smooth scrolling
 function initializeSmoothScrolling() {
-    // Smooth scroll to section
-    window.scrollToSection = function (sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    };
-
     // Handle navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function (e) {

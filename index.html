@@ -262,11 +262,20 @@
         </div>
     </footer>
 
+    <!-- EmailJS Configuration -->
+    <script src="/static/js/config.js"></script>
+
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
-            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your EmailJS public key
+            // Initialize EmailJS with configuration
+            if (window.EMAILJS_CONFIG && window.EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_ACTUAL_PUBLIC_KEY_HERE') {
+                emailjs.init(window.EMAILJS_CONFIG.PUBLIC_KEY);
+                console.log('EmailJS initialized successfully');
+            } else {
+                console.warn('EmailJS not configured - please update config.js with your actual EmailJS credentials');
+            }
         })();
     </script>
 
