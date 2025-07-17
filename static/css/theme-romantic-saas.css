@@ -1,0 +1,110 @@
+/* Romantic SaaS Theme – pink & cream */
+:root {
+    /* Brand Colors */
+    --primary-pink: #ff6b9d;
+    --primary-pink-dark: #e05283;
+    --primary-pink-light: #ffe5ec;
+    --purple: #9b59b6;
+    --purple-light: #e8d4f0;
+    --cream: #faf9f6;
+    --gray-900: #1f2937;
+    --gray-700: #374151;
+    --gray-500: #6b7280;
+    --gray-300: #d1d5db;
+    --white: #ffffff;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-pink), var(--purple));
+    --gradient-soft: linear-gradient(135deg, var(--primary-pink-light), var(--cream));
+    --gradient-overlay: linear-gradient(rgba(255, 107, 157, 0.05), rgba(155, 89, 182, 0.05));
+
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+}
+
+/* Global Background */
+body {
+    background: var(--cream);
+    color: var(--gray-900);
+}
+
+/* Navbar */
+.navbar {
+    background: var(--white);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo-text {
+    color: var(--primary-pink);
+    font-family: var(--font-script);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary-pink);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-pink-dark);
+}
+
+.btn-secondary {
+    background: var(--primary-pink-light);
+    color: var(--primary-pink);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-pink);
+    color: #fff;
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-pink);
+    color: var(--primary-pink);
+}
+
+.btn-outline:hover {
+    background: var(--primary-pink);
+    color: #fff;
+}
+
+/* Section titles */
+.section-title {
+    color: var(--primary-pink-dark);
+}
+
+/* Card styling */
+.card {
+    background: #fff;
+    border: 1px solid var(--gray-300);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Hearts back on */
+.floating-hearts {
+    display: block !important;
+}
+
+/* Optimize heart opacity for professional vibe */
+.floating-heart {
+    opacity: 0.4;
+}
+
+/* Focus outline accessibility */
+.btn:focus,
+.nav-link:focus,
+.gallery-tab:focus,
+.hamburger:focus {
+    outline: 3px solid var(--purple);
+    outline-offset: 2px;
+}
