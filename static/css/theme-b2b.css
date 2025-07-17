@@ -1,0 +1,104 @@
+/* Baby Blue B2B SaaS Theme Overrides */
+:root {
+    /* Brand Colors */
+    --primary-blue: #2e90fa;
+    --primary-blue-dark: #1c69d4;
+    --primary-blue-light: #e5f1ff;
+    --accent-teal: #1fb6ff;
+    --gray-900: #1f2937;
+    --gray-700: #374151;
+    --gray-500: #6b7280;
+    --gray-300: #d1d5db;
+    --gray-100: #f3f4f6;
+
+    /* Override existing pink/purple palette */
+    --primary-pink: var(--primary-blue);
+    --soft-pink: var(--primary-blue-light);
+    --light-pink: var(--primary-blue-light);
+    --purple: var(--primary-blue-dark);
+    --soft-purple: var(--primary-blue-light);
+    --gold: var(--accent-teal);
+    --soft-gold: var(--primary-blue-light);
+
+    /* Update gradients */
+    --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    --gradient-soft: linear-gradient(135deg, var(--primary-blue-light), var(--gray-100));
+    --gradient-overlay: linear-gradient(rgba(46, 144, 250, 0.05), rgba(28, 105, 212, 0.05));
+
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-script: 'Inter', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.logo-text {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-blue-dark);
+    box-shadow: 0 4px 12px rgba(46, 144, 250, 0.3);
+}
+
+.btn-secondary {
+    background: var(--primary-blue-light);
+    color: var(--primary-blue);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.btn-outline:hover {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+/* Section titles */
+.section-title {
+    color: var(--primary-blue-dark);
+}
+
+/* Cards & containers */
+.message-card,
+.game-card,
+.gallery-item {
+    border: 1px solid var(--gray-300);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Countdown */
+.countdown-item {
+    background: #ffffff;
+    border: 1px solid var(--gray-300);
+}
+
+/* Footer */
+.footer {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+/* Remove floating hearts for cleaner SaaS look */
+.floating-hearts {
+    display: none !important;
+}
