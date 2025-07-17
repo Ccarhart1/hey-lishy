@@ -480,7 +480,7 @@ function hideLoadingIndicator(loader) {
 
 // Export functions for use in other scripts
 window.LiShyWebsite = {
-    scrollToSection,
+    scrollToSection: window.scrollToSection,
     showRandomMessage,
     showLoadingIndicator,
     hideLoadingIndicator

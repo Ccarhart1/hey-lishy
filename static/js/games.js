@@ -625,16 +625,13 @@ function saveDrawing() {
 function sendDrawingEmail(imageData) {
     console.log('Attempting to send drawing email...');
 
-    // Send email using EmailJS with same template as love notes
+    // Send email using EmailJS with simplified template parameters
     const templateParams = {
+        to_name: 'Caleb',
         to_email: 'calebcarhart1110@gmail.com',
         from_name: 'Li Shy',
-        subject: '🎨 Li Shy Drew You Something Special!',
-        message: `Li Shy just created a beautiful drawing for you!\n\nSent with love on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`,
-        love_note: 'Check out this beautiful drawing I made for you! 🎨💕',
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
-        drawing_data: imageData
+        message: `Li Shy just created a beautiful drawing for you! 🎨💕\n\nSent with love on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`,
+        reply_to: 'noreply@hey-lishy.com'
     };
 
     if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG) {
@@ -647,6 +644,7 @@ function sendDrawingEmail(imageData) {
         }
 
         console.log('Sending drawing email with template:', window.EMAILJS_CONFIG.TEMPLATE_ID);
+        console.log('Template params:', templateParams);
 
         emailjs.send(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
             .then(function (response) {
@@ -661,7 +659,7 @@ function sendDrawingEmail(imageData) {
                 // Show more specific error message
                 let errorMessage = 'Failed to send drawing 🎨❌';
                 if (error.status === 400) {
-                    errorMessage = 'Email configuration error 🎨❌';
+                    errorMessage = 'Template parameter mismatch 🎨❌';
                 } else if (error.status === 401) {
                     errorMessage = 'Email authentication failed 🎨❌';
                 } else if (error.status === 429) {
@@ -846,15 +844,15 @@ function saveLoveNote() {
 }
 
 function sendLoveNoteEmail(note) {
-    // Send email using EmailJS
+    console.log('Attempting to send love note email...');
+
+    // Send email using EmailJS with simplified template parameters
     const templateParams = {
+        to_name: 'Caleb',
         to_email: 'calebcarhart1110@gmail.com',
         from_name: 'Li Shy',
-        subject: '💌 Li Shy Sent You a Love Note!',
         message: `Li Shy just wrote you a sweet love note:\n\n"${note.text}"\n\nSent with love on ${note.date} at ${note.time}`,
-        love_note: note.text,
-        date: note.date,
-        time: note.time
+        reply_to: 'noreply@hey-lishy.com'
     };
 
     if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG) {
@@ -862,22 +860,40 @@ function sendLoveNoteEmail(note) {
         if (window.EMAILJS_CONFIG.SERVICE_ID === 'YOUR_ACTUAL_SERVICE_ID_HERE' ||
             window.EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_ACTUAL_TEMPLATE_ID_HERE') {
             console.warn('EmailJS not configured - please update config.js with your actual EmailJS credentials');
-            showSuccessMessage('Note saved locally (email not configured) 📝');
+            showSuccessMessage('Note not sent (email not configured) 📝❌');
             return;
         }
+
+        console.log('Sending love note email with template:', window.EMAILJS_CONFIG.TEMPLATE_ID);
+        console.log('Template params:', templateParams);
 
         emailjs.send(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
             .then(function (response) {
                 console.log('Love note email sent successfully!', response.status, response.text);
-                showSuccessMessage('Email sent to you! 💌');
+                console.log('Email sent to:', templateParams.to_email);
+                showSuccessMessage('Love note sent successfully! 💌');
             }, function (error) {
-                console.log('Failed to send love note email:', error);
+                console.error('Failed to send love note email:', error);
                 console.error('EmailJS error details:', error);
-                showSuccessMessage('Note saved locally (email failed) 📝');
+                console.error('Template params:', templateParams);
+
+                // Show more specific error message
+                let errorMessage = 'Failed to send love note 📝❌';
+                if (error.status === 400) {
+                    errorMessage = 'Template parameter mismatch 📝❌';
+                } else if (error.status === 401) {
+                    errorMessage = 'Email authentication failed 📝❌';
+                } else if (error.status === 429) {
+                    errorMessage = 'Too many emails sent, try again later 📝❌';
+                }
+
+                showSuccessMessage(errorMessage);
             });
     } else {
-        console.warn('EmailJS not available or not configured');
-        showSuccessMessage('Note saved locally (email not available) 📝');
+        console.error('EmailJS not available or not configured');
+        console.error('EmailJS available:', typeof emailjs !== 'undefined');
+        console.error('Config available:', !!window.EMAILJS_CONFIG);
+        showSuccessMessage('Email service not available 📝❌');
     }
 }
 
