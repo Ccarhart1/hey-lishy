@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beautiful Li Shy 💕</title>
+    <meta name="description" content="A special place just for you, Li Shy">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💕</text></svg>">
+</head>
+
+<body>
+    <!-- Floating Hearts Animation -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Li Shy</span>
+                <span class="logo-heart">💕</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#gallery" class="nav-link">Our Photos</a></li>
+                <li><a href="#messages" class="nav-link">Sweet Words</a></li>
+                <li><a href="#countdown" class="nav-link">Countdown</a></li>
+                <li><a href="#messages" class="nav-link">Memories</a></li>
+                <li><a href="#games" class="nav-link">Fun Together</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="gradient-overlay"></div>
+            <div class="particle-system"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Hey there,</span>
+                <span class="title-main">Li Shy</span>
+                <span class="title-subtitle">My beautiful girlfriend</span>
+            </h1>
+            <p class="hero-message">
+                I miss you so much and created this special place just for you.
+                Every click, every scroll, every moment here is filled with my love for you 💕
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('messages')">
+                    <span>Read My Love Letter</span>
+                    <span class="btn-heart">💌</span>
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('gallery')">
+                    <span>See Our Photos</span>
+                    <span class="btn-heart">📸</span>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">↓</div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Sweet Messages Section -->
+    <section id="messages" class="messages-section">
+        <div class="container">
+            <h2 class="section-title">Sweet Words for You</h2>
+            <div class="messages-grid">
+                <div class="message-card active" data-message="0">
+                    <div class="message-header">
+                        <span class="message-date">Every day</span>
+                        <span class="message-icon">💕</span>
+                    </div>
+                    <div class="message-content">
+                        <p>Li Shy, you light up my world in ways I never knew were possible. Your smile, your laugh, the
+                            way you scrunch your nose when you're thinking - everything about you makes my heart flutter
+                            like it's the first time I fell in love.</p>
+                    </div>
+                </div>
+
+                <div class="message-card" data-message="1">
+                    <div class="message-header">
+                        <span class="message-date">Missing you</span>
+                        <span class="message-icon">🌙</span>
+                    </div>
+                    <div class="message-content">
+                        <p>Even though we're apart right now, I carry you with me everywhere. In the morning coffee that
+                            reminds me of our lazy Sunday mornings, in the songs that make me think of you, in every
+                            sunset that I wish I could share with you.</p>
+                    </div>
+                </div>
+
+                <div class="message-card" data-message="2">
+                    <div class="message-header">
+                        <span class="message-date">Forever</span>
+                        <span class="message-icon">♾️</span>
+                    </div>
+                    <div class="message-content">
+                        <p>Distance means nothing when you mean everything. You're not just my girlfriend, you're my
+                            best friend, my partner in crime, my safe place, and my greatest adventure all rolled into
+                            one perfect person.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-controls">
+                <button class="btn btn-outline" onclick="showRandomMessage()">
+                    <span>Random Sweet Message</span>
+                    <span class="btn-heart">🎲</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Our Beautiful Memories</h2>
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-category="all">All Photos</button>
+                <button class="gallery-tab" data-category="us">Us Together</button>
+                <button class="gallery-tab" data-category="you">Beautiful You</button>
+                <button class="gallery-tab" data-category="places">Special Places</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Photo placeholders - you can replace these with actual photos -->
+                <div class="gallery-item" data-category="us">
+                    <div class="photo-placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">💕</span>
+                            <span class="placeholder-text">Our first date photo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="you">
+                    <div class="photo-placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🌸</span>
+                            <span class="placeholder-text">Your beautiful smile</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="places">
+                    <div class="photo-placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🏞️</span>
+                            <span class="placeholder-text">Our favorite spot</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="us">
+                    <div class="photo-placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🎉</span>
+                            <span class="placeholder-text">Celebration moment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="countdown-section">
+        <div class="container">
+            <h2 class="section-title">Until We're Together Again</h2>
+            <div class="countdown-container">
+                <div class="countdown-display">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+                <p class="countdown-message">
+                    Every second brings us closer to being in each other's arms again 💕
+                </p>
+                <div class="reunion-date">
+                    <input type="date" id="reunionDate" class="date-input">
+                    <button class="btn btn-primary" onclick="setReunionDate()">Set Our Reunion Date</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Games Section -->
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="section-title">Fun Things We Can Do Together</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon">🎯</div>
+                    <h3>Memory Game</h3>
+                    <p>Test how well you remember our special moments together</p>
+                    <button class="btn btn-game" onclick="startMemoryGame()">Play Now</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🎨</div>
+                    <h3>Draw for Me</h3>
+                    <p>Create a little drawing that I can see and cherish</p>
+                    <button class="btn btn-game" onclick="openDrawingBoard()">Start Drawing</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">💌</div>
+                    <h3>Love Notes</h3>
+                    <p>Leave me a sweet message that I'll treasure forever</p>
+                    <button class="btn btn-game" onclick="openLoveNotes()">Write Note</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🎵</div>
+                    <h3>Our Playlist</h3>
+                    <p>Listen to songs that remind us of each other</p>
+                    <button class="btn btn-game" onclick="openPlaylist()">Play Music</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-message">
+                    Made with infinite love for Li Shy 💕<br>
+                    Distance means nothing when you mean everything
+                </p>
+                <div class="footer-hearts">
+                    <span class="heart">💕</span>
+                    <span class="heart">💖</span>
+                    <span class="heart">💕</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/gallery.js"></script>
+    <script src="/static/js/games.js"></script>
+    <script src="/static/js/countdown.js"></script>
+</body>
+
+</html>
