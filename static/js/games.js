@@ -617,28 +617,24 @@ function clearDrawing() {
 
 function saveDrawing() {
     const dataURL = drawingBoard.toDataURL();
-    const link = document.createElement('a');
-    link.download = 'drawing-for-my-love.png';
-    link.href = dataURL;
-    link.click();
 
-    // Send email with drawing
+    // Send email with drawing (no local save)
     sendDrawingEmail(dataURL);
-
-    // Show success message
-    showSuccessMessage('Drawing saved and sent! 🎨💕');
 }
 
 function sendDrawingEmail(imageData) {
-    // Send email using EmailJS
+    console.log('Attempting to send drawing email...');
+
+    // Send email using EmailJS with same template as love notes
     const templateParams = {
         to_email: 'calebcarhart1110@gmail.com',
         from_name: 'Li Shy',
-        subject: '💕 Li Shy Drew You Something Special!',
-        message: 'Li Shy just created a beautiful drawing for you! Check the attachment.',
-        drawing_data: imageData,
+        subject: '🎨 Li Shy Drew You Something Special!',
+        message: `Li Shy just created a beautiful drawing for you!\n\nSent with love on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`,
+        love_note: 'Check out this beautiful drawing I made for you! 🎨💕',
         date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString()
+        time: new Date().toLocaleTimeString(),
+        drawing_data: imageData
     };
 
     if (typeof emailjs !== 'undefined' && window.EMAILJS_CONFIG) {
@@ -646,21 +642,39 @@ function sendDrawingEmail(imageData) {
         if (window.EMAILJS_CONFIG.SERVICE_ID === 'YOUR_ACTUAL_SERVICE_ID_HERE' ||
             window.EMAILJS_CONFIG.TEMPLATE_ID === 'YOUR_ACTUAL_TEMPLATE_ID_HERE') {
             console.warn('EmailJS not configured - please update config.js with your actual EmailJS credentials');
-            showSuccessMessage('Drawing saved locally (email not configured) 🎨📝');
+            showSuccessMessage('Drawing not sent (email not configured) 🎨❌');
             return;
         }
+
+        console.log('Sending drawing email with template:', window.EMAILJS_CONFIG.TEMPLATE_ID);
 
         emailjs.send(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
             .then(function (response) {
                 console.log('Drawing email sent successfully!', response.status, response.text);
-                showSuccessMessage('Drawing emailed to you! 🎨💌');
+                console.log('Email sent to:', templateParams.to_email);
+                showSuccessMessage('Drawing sent successfully! 🎨💌');
             }, function (error) {
-                console.log('Failed to send drawing email:', error);
-                showSuccessMessage('Drawing saved locally (email failed) 🎨📝');
+                console.error('Failed to send drawing email:', error);
+                console.error('EmailJS error details:', error);
+                console.error('Template params:', templateParams);
+
+                // Show more specific error message
+                let errorMessage = 'Failed to send drawing 🎨❌';
+                if (error.status === 400) {
+                    errorMessage = 'Email configuration error 🎨❌';
+                } else if (error.status === 401) {
+                    errorMessage = 'Email authentication failed 🎨❌';
+                } else if (error.status === 429) {
+                    errorMessage = 'Too many emails sent, try again later 🎨❌';
+                }
+
+                showSuccessMessage(errorMessage);
             });
     } else {
-        console.warn('EmailJS not available or not configured');
-        showSuccessMessage('Drawing saved locally (email not available) 🎨📝');
+        console.error('EmailJS not available or not configured');
+        console.error('EmailJS available:', typeof emailjs !== 'undefined');
+        console.error('Config available:', !!window.EMAILJS_CONFIG);
+        showSuccessMessage('Email service not available 🎨❌');
     }
 }
 
