@@ -229,7 +229,6 @@ body {
     gap: var(--spacing-md);
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-xl);
 }
 
 /* Buttons */
@@ -302,7 +301,7 @@ body {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: var(--spacing-lg);
+    bottom: var(--spacing-xl);
     left: 50%;
     transform: translateX(-50%);
     text-align: center;

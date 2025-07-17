@@ -622,16 +622,33 @@ function saveDrawing() {
     link.href = dataURL;
     link.click();
 
-    // Send email notification (opens default email client)
-    const subject = encodeURIComponent('💕 Li Shy created a drawing for you!');
-    const body = encodeURIComponent(`Li Shy just created a beautiful drawing for you! 🎨💕\n\nShe saved it as "drawing-for-my-love.png" and wanted you to know she was thinking of you.\n\nWith love,\nYour romantic website 💖`);
-    const mailtoLink = `mailto:calebcarhart1110@gmail.com?subject=${subject}&body=${body}`;
-
-    // Open email client
-    window.open(mailtoLink, '_blank');
+    // Send email with drawing
+    sendDrawingEmail(dataURL);
 
     // Show success message
-    showSuccessMessage('Drawing saved! 🎨💕');
+    showSuccessMessage('Drawing saved and sent! 🎨💕');
+}
+
+function sendDrawingEmail(imageData) {
+    // Send email using EmailJS
+    const templateParams = {
+        to_email: 'calebcarhart1110@gmail.com',
+        from_name: 'Li Shy',
+        subject: '💕 Li Shy Drew You Something Special!',
+        message: 'Li Shy just created a beautiful drawing for you! Check the attachment.',
+        drawing_data: imageData,
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString()
+    };
+
+    if (typeof emailjs !== 'undefined') {
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(function (response) {
+                console.log('Drawing email sent successfully!', response.status, response.text);
+            }, function (error) {
+                console.log('Failed to send drawing email:', error);
+            });
+    }
 }
 
 function closeDrawingBoard() {
@@ -788,13 +805,8 @@ function saveLoveNote() {
     savedNotes.unshift(note);
     localStorage.setItem('loveNotes', JSON.stringify(savedNotes.slice(0, 10))); // Keep only last 10
 
-    // Send email notification (opens default email client)
-    const subject = encodeURIComponent('💌 Li Shy wrote you a love note!');
-    const body = encodeURIComponent(`Li Shy just wrote you a sweet love note! 💕\n\nHer message:\n"${noteText}"\n\nSent on: ${note.date} at ${note.time}\n\nShe's thinking of you! 💖\n\nWith love,\nYour romantic website 💕`);
-    const mailtoLink = `mailto:calebcarhart1110@gmail.com?subject=${subject}&body=${body}`;
-
-    // Open email client
-    window.open(mailtoLink, '_blank');
+    // Send email with love note
+    sendLoveNoteEmail(note);
 
     // Clear textarea
     document.getElementById('loveNoteText').value = '';
@@ -804,6 +816,28 @@ function saveLoveNote() {
 
     // Reload notes
     loadSavedNotes();
+}
+
+function sendLoveNoteEmail(note) {
+    // Send email using EmailJS
+    const templateParams = {
+        to_email: 'calebcarhart1110@gmail.com',
+        from_name: 'Li Shy',
+        subject: '💌 Li Shy Sent You a Love Note!',
+        message: `Li Shy just wrote you a sweet love note:\n\n"${note.text}"\n\nSent with love on ${note.date} at ${note.time}`,
+        love_note: note.text,
+        date: note.date,
+        time: note.time
+    };
+
+    if (typeof emailjs !== 'undefined') {
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            .then(function (response) {
+                console.log('Love note email sent successfully!', response.status, response.text);
+            }, function (error) {
+                console.log('Failed to send love note email:', error);
+            });
+    }
 }
 
 function loadSavedNotes() {

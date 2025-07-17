@@ -38,7 +38,7 @@
                 <li><a href="#gallery" class="nav-link">Our Photos</a></li>
                 <li><a href="#messages" class="nav-link">Sweet Words</a></li>
                 <li><a href="#countdown" class="nav-link">Countdown</a></li>
-                <li><a href="#messages" class="nav-link">Memories</a></li>
+                <li><a href="#gallery" class="nav-link">Memories</a></li>
                 <li><a href="#games" class="nav-link">Fun Together</a></li>
             </ul>
             <div class="hamburger">
@@ -205,12 +205,9 @@
                     </div>
                 </div>
                 <p class="countdown-message">
-                    Every second brings us closer to being in each other's arms again 💕
+                    Every second brings us closer to July 20th when we'll be together again 💕
                 </p>
-                <div class="reunion-date">
-                    <input type="date" id="reunionDate" class="date-input">
-                    <button class="btn btn-primary" onclick="setReunionDate()">Set Our Reunion Date</button>
-                </div>
+
             </div>
         </div>
     </section>
@@ -264,6 +261,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your EmailJS public key
+        })();
+    </script>
 
     <!-- JavaScript -->
     <script src="/static/js/main.js"></script>

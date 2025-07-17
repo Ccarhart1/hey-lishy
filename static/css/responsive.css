@@ -63,6 +63,7 @@
 
     .hero-buttons {
         gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-xl);
     }
 
     .countdown-display {
@@ -72,6 +73,12 @@
     .countdown-item {
         min-width: 140px;
         padding: var(--spacing-xl);
+    }
+
+    .scroll-indicator {
+        bottom: var(--spacing-xl);
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 

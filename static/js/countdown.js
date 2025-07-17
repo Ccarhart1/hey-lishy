@@ -8,16 +8,11 @@ let countdownInterval;
 let reunionDate = null;
 
 function initializeCountdown() {
-    // Set fixed reunion date to July 20th, 2025
+    // Set reunion date to July 20th, 2025
     reunionDate = new Date('2025-07-20T00:00:00');
     updateCountdownDisplay();
     startCountdown();
 
-    // Hide the date input section
-    const dateInputSection = document.querySelector('.reunion-date');
-    if (dateInputSection) {
-        dateInputSection.style.display = 'none';
-    }
 }
 
 function startCountdown() {
@@ -266,52 +261,7 @@ function playCelebrationSound() {
     }
 }
 
-// Function to set reunion date
-window.setReunionDate = function () {
-    const dateInput = document.getElementById('reunionDate');
-    if (!dateInput || !dateInput.value) {
-        alert('Please select a reunion date! 💕');
-        return;
-    }
 
-    const selectedDate = new Date(dateInput.value);
-    const now = new Date();
-
-    if (selectedDate <= now) {
-        alert('Please select a future date! 📅');
-        return;
-    }
-
-    reunionDate = selectedDate;
-    localStorage.setItem('reunionDate', reunionDate.toISOString());
-
-    // Show success message
-    const successMessage = document.createElement('div');
-    successMessage.textContent = 'Reunion date set! 💕';
-    successMessage.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #4CAF50;
-        color: white;
-        padding: 15px 25px;
-        border-radius: 10px;
-        z-index: 10000;
-        animation: slideIn 0.5s ease-out;
-    `;
-
-    document.body.appendChild(successMessage);
-
-    setTimeout(() => {
-        successMessage.remove();
-    }, 3000);
-
-    // Restart countdown
-    startCountdown();
-
-    // Add celebration effect
-    createFloatingHearts();
-};
 
 function createFloatingHearts() {
     const hearts = ['💕', '💖', '💗', '💝'];
