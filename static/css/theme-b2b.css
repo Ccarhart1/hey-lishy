@@ -102,3 +102,123 @@
 .floating-hearts {
     display: none !important;
 }
+
+/* Hero Section */
+.hero-background {
+    background: var(--gradient-soft);
+}
+
+.title-line,
+.title-subtitle {
+    color: var(--gray-700);
+}
+
+.title-main {
+    color: var(--primary-blue);
+    text-shadow: none;
+}
+
+.hero-message {
+    color: var(--gray-500);
+}
+
+/* Section Backgrounds */
+section {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+}
+
+.messages-section,
+.gallery-section,
+.countdown-section,
+.games-section {
+    background: #ffffff;
+}
+
+/* Messages */
+.message-card {
+    background: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.message-card.active {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px var(--primary-blue-light);
+}
+
+/* Gallery */
+.gallery-tab {
+    background: transparent;
+    border: 2px solid var(--primary-blue-light);
+    color: var(--primary-blue);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.gallery-tab.active,
+.gallery-tab:hover {
+    background: var(--primary-blue);
+    color: #ffffff;
+}
+
+/* Games */
+.game-card {
+    background: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.game-icon {
+    color: var(--primary-blue);
+}
+
+/* Countdown */
+.countdown-number {
+    color: var(--primary-blue-dark);
+}
+
+.countdown-label {
+    color: var(--gray-700);
+}
+
+/* Scroll Indicator */
+.scroll-indicator .scroll-arrow {
+    border-color: var(--primary-blue);
+}
+
+/* Remove excessive animations for SaaS vibe */
+.pulse,
+.bounce,
+.glow {
+    animation: none !important;
+}
+
+/* Focus outlines for accessibility */
+.btn:focus,
+.nav-link:focus,
+.gallery-tab:focus,
+.hamburger:focus {
+    outline: 3px solid var(--accent-teal);
+    outline-offset: 2px;
+}
+
+/* Hide particle effects for cleaner SaaS look */
+.particle-system {
+    display: none !important;
+}
+
+/* Disable intensive hover transforms */
+.hover-lift:hover,
+.hover-grow:hover,
+.hover-tilt:hover {
+    transform: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
