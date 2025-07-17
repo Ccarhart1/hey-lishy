@@ -9,15 +9,15 @@ const memoryGameData = {
     questions: [
         {
             question: "What was the first movie we watched together?",
-            options: ["The Princess Bride", "Titanic", "The Notebook", "Your favorite movie"],
-            correct: 3,
-            explanation: "It was your favorite movie! I loved watching it with you and seeing your reactions."
+            options: ["The Princess Bride", "Titanic", "Everything Everywhere All at Once", "The Notebook"],
+            correct: 2,
+            explanation: "It was Everything Everywhere All at Once! Such a wild and amazing movie to experience together for the first time."
         },
         {
-            question: "What's our favorite song to dance to?",
-            options: ["Perfect by Ed Sheeran", "All of Me by John Legend", "Our special song", "Can't Help Myself"],
+            question: "What was the first song we sang together?",
+            options: ["Perfect by Ed Sheeran", "All of Me by John Legend", "Happier Than Ever by Billie Eilish", "Can't Help Myself"],
             correct: 2,
-            explanation: "It's our special song that always makes us both smile and dance together!"
+            explanation: "It was Happier Than Ever by Billie Eilish! I loved hearing your voice and singing along with you."
         },
         {
             question: "What's my favorite thing about you?",
